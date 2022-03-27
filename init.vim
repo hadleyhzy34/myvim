@@ -1,51 +1,3 @@
-# vim
-
-## content
-
-* vim installation
-* vim configuration
-* vim basics
-* vim plugins
-
-## neovim installation
-
-### Build prerequisites
-
-```linux
-sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
-```
-### Quick start
-
-```
-git clone https://github.com/neovim/neovim
-git checkout stable
-cd neovim && make
-sudo make install
-```
-
-## neovim configure
-
-### pre-setup
-
-```linux
-mkdir -p ~/.config/nvim/plugged
-mkdir -p ~/.config/nvim/autoload
-cd ~/.config/nvim/
-touch init.nvim
-```
-
-### vim-plug setup
-
-```linux
-cd ~/.config/nvim/plugged
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-cp ~/.local/share/nvim/site/autoload/plug.vim .
-```
-
-### config ~/.vim/nvim/init.vim
-
-```
 syntax on
 
 set noerrorbells
@@ -89,6 +41,9 @@ Plug 'dense-analysis/ale'
 set encoding=UTF-8
 call plug#end()
 
+" tags manager
+nnoremap tj :tabprev<CR>
+nnoremap tk :tabnext<CR>
 
 let mapleader = " "
 nnoremap <leader>u :UndotreeShow<CR>
@@ -96,9 +51,14 @@ nnoremap <leader>u :UndotreeShow<CR>
 " NerdTree
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="-"
+
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -109,49 +69,5 @@ colorscheme gruvbox
 " :set colorscheme jellybeans
 :set background=dark
 
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="-"
-```
-
-### installation
-
-```
-:PlugInstall
-```
-## neovim plugin installation and setup
-
-### coc.nvim
-
-#### prerequisites
-
-```
-sudo apt-get install nodejs
-sudo apt-get install npm
-sudo npm install -g yarn
-```
-
-#### build && make
-
-```
-cd ~/.config/nvim/plugged/coc.nvim/
-yarn install
-yarn build
-```
-
-### tagbar
-
-```
-pip install --upgrade pynvim
-```
-
-## usage
-
-### tagbar
-
-```
-:tabnew <file_name>
-tj
-tk
-```
-
-### 
+" coc autocomplete
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
