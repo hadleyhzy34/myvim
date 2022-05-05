@@ -31,7 +31,7 @@ sudo make install
 mkdir -p ~/.config/nvim/plugged
 mkdir -p ~/.config/nvim/autoload
 cd ~/.config/nvim/
-touch init.nvim
+touch init.vim
 ```
 
 ### vim-plug setup
