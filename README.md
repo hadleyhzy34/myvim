@@ -145,6 +145,11 @@ cd ~/.config/nvim/plugged/coc.nvim/
 yarn install
 yarn build
 ```
+#### `coc-pyright` installation
+
+```
+:CocInstall coc-pyright
+```
 
 ### tagbar
 
