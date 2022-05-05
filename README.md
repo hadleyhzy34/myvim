@@ -124,8 +124,16 @@ let g:NERDTreeDirArrowCollapsible="-"
 
 #### prerequisites
 
+##### nodejs installation
+
 ```
-sudo apt-get install nodejs
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+##### `npm` and `yarn` installation
+
+```
 sudo apt-get install npm
 sudo npm install -g yarn
 ```
