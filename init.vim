@@ -41,9 +41,6 @@ Plug 'dense-analysis/ale'
 set encoding=UTF-8
 call plug#end()
 
-" tags manager
-nnoremap tj :tabprev<CR>
-nnoremap tk :tabnext<CR>
 
 let mapleader = " "
 nnoremap <leader>u :UndotreeShow<CR>
@@ -51,14 +48,9 @@ nnoremap <leader>u :UndotreeShow<CR>
 " NerdTree
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="-"
-
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -69,5 +61,15 @@ colorscheme gruvbox
 " :set colorscheme jellybeans
 :set background=dark
 
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="-"
+
 " coc autocomplete
-inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" tabnew
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
