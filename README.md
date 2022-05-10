@@ -136,7 +136,9 @@ nnoremap tl  :tablast<CR>
 go to `conda` env and install neovim
 
 ```
-conda activate <env_name> && pip install neovim
+conda activate <env_name>
+pip install neovim
+pip install --upgrade pynvim
 ```
 
 ### coc.nvim
@@ -170,10 +172,15 @@ yarn build
 :CocInstall coc-pyright
 ```
 
-### tagbar
+### ctags
 
 ```
-pip install --upgrade pynvim
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags
+./autogen.sh
+./configure --prefix=/where/you/want # defaults to /usr/local
+make
+sudo make install # may require extra privileges depending on where to install
 ```
 
 ## usage
@@ -185,5 +192,3 @@ pip install --upgrade pynvim
 tj
 tk
 ```
-
-### 
