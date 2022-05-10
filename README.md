@@ -123,12 +123,23 @@ nnoremap tk  :tabprev<CR>
 nnoremap tl  :tablast<CR>
 ```
 
-### installation
+## installation
+
+### Plug Install
 
 ```
 :PlugInstall
 ```
-## neovim plugin installation and setup
+
+### python3 support
+
+go to `conda` env and install neovim
+
+```
+conda activate <env_name>
+pip install neovim
+pip install --upgrade pynvim
+```
 
 ### coc.nvim
 
@@ -161,10 +172,24 @@ yarn build
 :CocInstall coc-pyright
 ```
 
-### tagbar
+#### `C++`,`git`,`cmake` installation
 
 ```
-pip install --upgrade pynvim
+:CocInstall coc-clangd  # C++ plugin
+:CocCommand clangd.install
+:CocInstall coc-cmake  # Cmake support
+:CocInstall coc-git    # git support
+```
+
+### ctags
+
+```
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags
+./autogen.sh
+./configure --prefix=/where/you/want # defaults to /usr/local
+make
+sudo make install # may require extra privileges depending on where to install
 ```
 
 ## usage
@@ -176,5 +201,3 @@ pip install --upgrade pynvim
 tj
 tk
 ```
-
-### 
