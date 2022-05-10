@@ -172,6 +172,15 @@ yarn build
 :CocInstall coc-pyright
 ```
 
+#### `C++`,`git`,`cmake` installation
+
+```
+:CocInstall coc-clangd  # C++ plugin
+:CocCommand clangd.install
+:CocInstall coc-cmake  # Cmake support
+:CocInstall coc-git    # git support
+```
+
 ### ctags
 
 ```
