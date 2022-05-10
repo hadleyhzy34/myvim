@@ -123,12 +123,21 @@ nnoremap tk  :tabprev<CR>
 nnoremap tl  :tablast<CR>
 ```
 
-### installation
+## installation
+
+### Plug Install
 
 ```
 :PlugInstall
 ```
-## neovim plugin installation and setup
+
+### python3 support
+
+go to `conda` env and install neovim
+
+```
+conda activate <env_name> && pip install neovim
+```
 
 ### coc.nvim
 
