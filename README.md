@@ -188,6 +188,12 @@ Run command `:PlugInstall` in your (neo)vim.
 :CocInstall coc-cmake  # Cmake support
 :CocInstall coc-git    # git support
 ```
+#### issue: `CocCommand clangd.install` read timeout
+
+```
+sudo apt-get install clangd-12
+sudo ln -s /usr/bin/clangd-12 /usr/bin/clangd
+```
 
 ### ctags
 
