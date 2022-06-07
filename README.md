@@ -146,6 +146,25 @@ pip install --upgrade pynvim
 
 #### prerequisites
 
+Requirements
+neovim >= 0.4.0 or vim >= 8.0.1453 (run :version or vim --version to checkout your vim version)
+node >= 12.12
+
+```
+curl -sL install-node.now.sh | bash
+```
+
+Note: coc.nvim finds node by calling executable('node') from within vim. Check out :h g:coc_node_path to customize node path.
+
+Install Yarn — required when building from source.
+```
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+```
+Note: NixOS users must follow these steps:
+
+Install Node.js via nix-env or put it in /etc/nixos/configuration.nix
+sudo nixos-rebuild switch
+
 ##### nodejs installation
 
 ```
