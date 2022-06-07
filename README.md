@@ -160,32 +160,20 @@ Install Yarn — required when building from source.
 ```
 curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 ```
-Note: NixOS users must follow these steps:
 
-Install Node.js via nix-env or put it in /etc/nixos/configuration.nix
-sudo nixos-rebuild switch
-
-##### nodejs installation
+#### Using vim-plug
+Use release branch (recommended):
 
 ```
-curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-sudo apt-get install -y nodejs
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 ```
-
-##### `npm` and `yarn` installation
+Build from source:
 
 ```
-sudo apt-get install npm
-sudo npm install -g yarn
+Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 ```
+Run command `:PlugInstall` in your (neo)vim.
 
-#### build && make
-
-```
-cd ~/.config/nvim/plugged/coc.nvim/
-yarn install
-yarn build
-```
 #### `coc-pyright` installation
 
 ```
