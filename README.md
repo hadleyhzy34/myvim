@@ -18,8 +18,9 @@ sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake c
 
 ```
 git clone https://github.com/neovim/neovim
+cd neovim
 git checkout stable
-cd neovim && make
+make
 sudo make install
 ```
 
@@ -145,27 +146,34 @@ pip install --upgrade pynvim
 
 #### prerequisites
 
-##### nodejs installation
+Requirements
+neovim >= 0.4.0 or vim >= 8.0.1453 (run :version or vim --version to checkout your vim version)
+node >= 12.12
 
 ```
-curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -sL install-node.now.sh | bash
 ```
 
-##### `npm` and `yarn` installation
+Note: coc.nvim finds node by calling executable('node') from within vim. Check out :h g:coc_node_path to customize node path.
+
+Install Yarn — required when building from source.
+```
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+```
+
+#### Using vim-plug
+Use release branch (recommended):
 
 ```
-sudo apt-get install npm
-sudo npm install -g yarn
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 ```
-
-#### build && make
+Build from source:
 
 ```
-cd ~/.config/nvim/plugged/coc.nvim/
-yarn install
-yarn build
+Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 ```
+Run command `:PlugInstall` in your (neo)vim.
+
 #### `coc-pyright` installation
 
 ```
@@ -179,6 +187,12 @@ yarn build
 :CocCommand clangd.install
 :CocInstall coc-cmake  # Cmake support
 :CocInstall coc-git    # git support
+```
+#### issue: `CocCommand clangd.install` read timeout
+
+```
+sudo apt-get install clangd-12
+sudo ln -s /usr/bin/clangd-12 /usr/bin/clangd
 ```
 
 ### ctags
