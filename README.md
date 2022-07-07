@@ -161,6 +161,13 @@ Install Yarn — required when building from source.
 curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 ```
 
+Git checkout
+
+```
+cd ~/.config/.nvim/plugged/coc.nvim/.
+git checkout release
+```
+
 #### Using vim-plug
 Use release branch (recommended):
 
